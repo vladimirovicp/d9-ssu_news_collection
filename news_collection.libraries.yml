@@ -1,0 +1,14 @@
+ssu-news-assets:
+  css:
+    theme:
+      assets/css/air-datepicker.css: {}
+      assets/css/news-front.css: {}
+      assets/css/global.css: {}
+  js:
+    assets/js/calendar.js: {}
+    assets/js/ssu_news.js: {}
+    assets/js/news-swiper.js: {}
+calendar:
+  js:
+    assets/js/calendar.js: {}
+    assets/js/ssu_news.js: {}

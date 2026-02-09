@@ -1,0 +1,73 @@
+<div class="news-collection__grid-item{{ content.main_news ? ' news-main' : '' }}">
+
+
+    {# <a href="#" class="news-collection__img">
+        {% if content.img_url %}
+            <figure class="news-collection__figure">
+                <img src="{{ content.img_url  }}" alt="{{ content.img_alt}}">
+                <figcaption class="news-collection__figcaption">Читать</figcaption>
+            </figure>
+        {% endif %}
+    </a> #}
+
+    {% if content.img_top|length == 1 %}
+        <div class="news-collection__img">
+            {% if content.img_top.0.url %}
+                <figure class="news-collection__figure">
+                    <img src="{{ content.img_top.0.url  }}" alt="{{ content.img_top.0.alt }}">
+                </figure>
+            {% endif %}
+        </div>
+    {% else %}
+
+        {% if content.img_top|length == 0 %}
+            <div class="news-collection__img">
+                <figure class="news-collection__figure">
+                    <img src="/themes/custom/ssu/assets/img/main-photo.png" alt="Фотография по умолчанию">
+                </figure>
+            </div>
+        {% else %}
+            <div class="news-collection__swiper news-collection__swiper-{{content.id}}">
+                <div class="swiper-wrapper">
+                {% for item in content.img_top %}
+                        <div class="swiper-slide">
+                            <img src="{{item.url}}" alt="{{item.alt}}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-next news-collection__arrow-next-1"></div>
+                <div class="swiper-button-prev news-collection__arrow-prev-1"></div>
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+
+
+
+
+
+    <div class="news-collection__announce">
+        <div class="news-collection__announce-top">
+            <div class="news-collection__date">{{ content.date }}</div>
+            {% set headings =  content.headings %}
+            {% set headings_count =  headings|default([])|length %}
+
+            {% if headings_count > 0 %}
+                <div class="news-collection__tags">
+                    {% for key, item in content.headings %}
+                      {% if key == 0 %}
+                        <a href="?heading={{item}}" class="news-collection__heading-link link--metis">{{ item }}</a>
+                      {% else %}
+                        <span>{{ ', '|trim }} </span>
+                        <a href="?heading={{item}}" class="news-collection__heading-link link--metis">{{ item }}</a>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <a class="news-collection__title" href="{{ content.url}}">{{ content.title }}</a>
+
+        <div class="news-collection__announce-text">{{ content.news_announce }}</div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+name: "news collection"
+description: "Новости главная страница"
+type: module
+package: SSU
+core_version_requirement: ^9

@@ -1,0 +1,18 @@
+.link--metis {
+  text-decoration: underline;
+}
+
+@media (hover: hover) {
+  .link--metis {
+    text-decoration: none;
+    background-image: linear-gradient(to right, currentColor, currentColor);
+    background-size: 0 0.1rem;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    transition: background-size 0.8s ease-in-out;
+  }
+  .link--metis:hover {
+    background-size: 100% 0.1rem;
+    background-position: left bottom;
+  }
+}/*# sourceMappingURL=global.css.map */

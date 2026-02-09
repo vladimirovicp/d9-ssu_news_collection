@@ -1,0 +1,40 @@
+news_collection.listing:
+  path: "/news-list"
+  defaults:
+    _controller: '\Drupal\news_collection\Controller\NewsCollectionListing::view'
+    _title: "Новости"
+  requirements:
+    _permission: "access content"
+  options:
+    no_cache: "TRUE"
+
+news_subdivision_child.listing:
+  path: '/struktura/{subdivision}/{subdivision_child}/news'
+  defaults:
+    _controller: '\Drupal\news_collection\Controller\NewsSubdivisionChildListing::view'
+    _title: 'Новости подразделения'
+  requirements:
+    _permission: 'access content'
+    subdivision: '[^/]+'
+    subdivision_child: '^(?!news$)[^/]+'
+  options:
+    no_cache: "TRUE"
+    parameters:
+      subdivision:
+        type: string
+      subdivision_child:
+        type: string
+
+news_subdivision.listing:
+  path: '/struktura/{subdivision}/news'
+  defaults:
+    _controller: '\Drupal\news_collection\Controller\NewsSubdivisionListing::view'
+    _title: 'Новости подразделения'
+  requirements:
+    _permission: 'access content'
+    subdivision: '[^/]+'
+  options:
+    no_cache: "TRUE"
+    parameters:
+      subdivision:
+        type: string

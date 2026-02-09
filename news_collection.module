@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function news_collection_theme()
+{
+    return [
+        'news-collection-listing' => [
+            'variables' => [
+                'content' => NULL,
+                'pagination' => NULL,
+            ],
+        ],
+        'news-subdivision-listing' => [
+            'variables' => [
+                'content' => NULL,
+                'pagination' => NULL,
+            ],
+        ],
+        'news-subdivision-child-listing' => [
+            'variables' => [
+                'content' => NULL,
+                'pagination' => NULL,
+            ],
+        ],
+        'news-card' => [
+            'variables' => [
+                'content' => NULL
+            ],
+        ],
+    ];
+}
