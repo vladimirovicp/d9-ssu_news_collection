@@ -24,6 +24,13 @@ function news_collection_theme()
                 'pagination' => NULL,
             ],
         ],
+        'news-subdivision-child-listing2' => [
+            'variables' => [
+                'content' => NULL,
+                'pagination' => NULL,
+            ],
+        ],
+        
         'news-card' => [
             'variables' => [
                 'content' => NULL

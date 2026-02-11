@@ -8,6 +8,25 @@ news_collection.listing:
   options:
     no_cache: "TRUE"
 
+news_subdivision_child.listing2:
+  path: '/struktura/{subdivision}/{subdivision_child}/{subdivision_child2}/news'
+  defaults:
+    _controller: '\Drupal\news_collection\Controller\NewsSubdivisionChildListing2::view'
+    _title: 'Новости подразделения'
+  requirements:
+    _permission: 'access content'
+    subdivision: '[^/]+'
+    subdivision_child: '^(?!news$)[^/]+'
+  options:
+    no_cache: "TRUE"
+    parameters:
+      subdivision:
+        type: string
+      subdivision_child:
+        type: string
+      subdivision_child2:
+        type: string        
+
 news_subdivision_child.listing:
   path: '/struktura/{subdivision}/{subdivision_child}/news'
   defaults:
