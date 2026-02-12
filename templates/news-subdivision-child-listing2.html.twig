@@ -1,5 +1,3 @@
-{# {{ drupal_view('main_news', 'block_2') }} #}
-
 {% set page_first = {'page': '1'} %}
 {% set page_prev = {'page': pagination.previous} %}
 {% set page_prev2 = {'page': pagination.previous2} %}
@@ -7,140 +5,36 @@
 {% set page_next2 = {'page': pagination.next2} %}
 {% set page_last = {'page': pagination.total_pages} %}
 
-{# Нужно переписать на функцию #}
-{% if pagination.search is defined %}
-	{% set page_first = page_first|merge({ 'search': pagination.search }) %}
-	{% set page_prev = page_prev|merge({ 'search': pagination.search }) %}
-	{% set page_next = page_next|merge({ 'search': pagination.search }) %}
-	{% set page_last = page_last|merge({ 'search': pagination.search }) %}
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'search': pagination.search }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'search': pagination.search }) %}
-	{% endif %}
-{% endif %}
-{% if pagination.heading is defined %}
-	{% set page_first = page_first|merge({ 'heading': pagination.heading }) %}
-	{% set page_prev = page_prev|merge({ 'heading': pagination.heading }) %}
-	{% set page_next = page_next|merge({ 'heading': pagination.heading }) %}
-	{% set page_last = page_last|merge({ 'heading': pagination.heading }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'heading': pagination.heading }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'heading': pagination.heading }) %}
-	{% endif %}
-{% endif %}
-
-{% if pagination.top_news is defined %}
-	{% set page_first = page_first|merge({ 'top_news': pagination.top_news }) %}
-	{% set page_prev = page_prev|merge({ 'top_news': pagination.top_news }) %}
-	{% set page_next = page_next|merge({ 'top_news': pagination.top_news }) %}
-	{% set page_last = page_last|merge({ 'top_news': pagination.top_news }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'top_news': pagination.top_news }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'top_news': pagination.top_news }) %}
-	{% endif %}
-{% endif %}
-
-{% if pagination.next_to_date is defined %}
-
-	{% set page_first = page_first|merge({ 'next_to_date': pagination.next_to_date }) %}
-	{% set page_prev = page_prev|merge({ 'next_to_date': pagination.next_to_date }) %}
-	{% set page_next = page_next|merge({ 'next_to_date': pagination.next_to_date }) %}
-	{% set page_last = page_last|merge({ 'next_to_date': pagination.next_to_date }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'next_to_date': pagination.next_to_date }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'next_to_date': pagination.next_to_date }) %}
-	{% endif %}
-
-{% endif %}
-
-{% if pagination.tag is defined %}
-	{% set page_first = page_first|merge({ 'tag': pagination.tag }) %}
-	{% set page_prev = page_prev|merge({ 'tag': pagination.tag }) %}
-	{% set page_next = page_next|merge({ 'tag': pagination.tag }) %}
-	{% set page_last = page_last|merge({ 'tag': pagination.tag }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'tag': pagination.tag }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'tag': pagination.tag }) %}
-	{% endif %}
-
-{% endif %}
-
-{% if pagination.keywords is defined %}
-	{% set page_first = page_first|merge({ 'keywords': pagination.keywords }) %}
-	{% set page_prev = page_prev|merge({ 'keywords': pagination.keywords }) %}
-	{% set page_next = page_next|merge({ 'keywords': pagination.keywords }) %}
-	{% set page_last = page_last|merge({ 'keywords': pagination.keywords }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'keywords': pagination.keywords }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'keywords': pagination.keywords }) %}
-	{% endif %}
-{% endif %}
-
-{% if pagination.divisions is defined %}
-	{% set page_first = page_first|merge({ 'divisions': pagination.divisions }) %}
-	{% set page_prev = page_prev|merge({ 'divisions': pagination.divisions }) %}
-	{% set page_next = page_next|merge({ 'divisions': pagination.divisions }) %}
-	{% set page_last = page_last|merge({ 'divisions': pagination.divisions }) %}
-
-	{% if (page_prev2)  %}
-		{% set page_prev2 = page_prev2|merge({ 'divisions': pagination.divisions }) %}
-	{% endif %}
-
-	{% if (page_next2)  %}
-		{% set page_next2 = page_next2|merge({ 'divisions': pagination.divisions }) %}
-	{% endif %}
-{% endif %}
 
 {% if pagination.subdivision is defined %}
-	{% set page_first = page_first|merge({ 'subdivision': pagination.subdivision }) %}
-	{% set page_prev = page_prev|merge({ 'subdivision': pagination.subdivision }) %}
-	{% set page_prev2 = page_prev2|merge({ 'subdivision': pagination.subdivision }) %}
-	{% set page_next = page_next|merge({ 'subdivision': pagination.subdivision }) %}
-	{% set page_next2 = page_next2|merge({ 'subdivision': pagination.subdivision }) %}
-	{% set page_last = page_last|merge({ 'subdivision': pagination.subdivision }) %}
+	{% set subdivision_params = { 'subdivision': pagination.subdivision } %}
+	{% set page_first = page_first|merge(subdivision_params) %}
+	{% set page_prev = page_prev|merge(subdivision_params) %}
+	{% set page_prev2 = page_prev2|merge(subdivision_params) %}
+	{% set page_next = page_next|merge(subdivision_params) %}
+	{% set page_next2 = page_next2|merge(subdivision_params) %}
+	{% set page_last = page_last|merge(subdivision_params) %}
 {% endif %}
 
 {% if pagination.subdivision_child is defined %}
-	{% set page_first = page_first|merge({ 'subdivision_child': pagination.subdivision_child }) %}
-	{% set page_prev = page_prev|merge({ 'subdivision_child': pagination.subdivision_child }) %}
-	{% set page_prev2 = page_prev2|merge({ 'subdivision_child': pagination.subdivision_child }) %}
-	{% set page_next = page_next|merge({ 'subdivision_child': pagination.subdivision_child }) %}
-	{% set page_next2 = page_next2|merge({ 'subdivision_child': pagination.subdivision_child }) %}
-	{% set page_last = page_last|merge({ 'subdivision_child': pagination.subdivision_child }) %}
+	{% set subdivision_child_params = { 'subdivision_child': pagination.subdivision_child } %}
+	{% set page_first = page_first|merge(subdivision_child_params) %}
+	{% set page_prev = page_prev|merge(subdivision_child_params) %}
+	{% set page_prev2 = page_prev2|merge(subdivision_child_params) %}
+	{% set page_next = page_next|merge(subdivision_child_params) %}
+	{% set page_next2 = page_next2|merge(subdivision_child_params) %}
+	{% set page_last = page_last|merge(subdivision_child_params) %}
 {% endif %}
 
 {% if pagination.subdivision_child2 is defined %}
-	{% set page_first = page_first|merge({ 'subdivision_child2': pagination.subdivision_child2 }) %}
-	{% set page_prev = page_prev|merge({ 'subdivision_child2': pagination.subdivision_child2 }) %}
-	{% set page_prev2 = page_prev2|merge({ 'subdivision_child2': pagination.subdivision_child2 }) %}
-	{% set page_next = page_next|merge({ 'subdivision_child2': pagination.subdivision_child2 }) %}
-	{% set page_next2 = page_next2|merge({ 'subdivision_child2': pagination.subdivision_child2}) %}
-	{% set page_last = page_last|merge({ 'subdivision_child2': pagination.subdivision_child2 }) %}
+	{% set subdivision_child2_params = { 'subdivision_child2': pagination.subdivision_child2 } %}
+	{% set page_first = page_first|merge(subdivision_child2_params) %}
+	{% set page_prev = page_prev|merge(subdivision_child2_params) %}
+	{% set page_prev2 = page_prev2|merge(subdivision_child2_params) %}
+	{% set page_next = page_next|merge(subdivision_child2_params) %}
+	{% set page_next2 = page_next2|merge(subdivision_child2_params) %}
+	{% set page_last = page_last|merge(subdivision_child2_params) %}
 {% endif %}
-
 
 <section class="news-collection__big-title">
 	<div class="container">
@@ -219,14 +113,8 @@
 					{% else %}
 						<span class="news-collection__number-page _current">{{ pagination.total_pages }}</span>
 					{% endif %}
-
 				{% endif %}
-
 			</div>
-
-			{# <div class="news-collection__filter-box">
-				<button class="news-collection__filter-btn">Показать фильтры</button>
-			</div> #}
 
 			<div class="news-collection__pagination-two">
 
@@ -241,20 +129,8 @@
 					<a href="{{ path('news_subdivision_child.listing2', page_prev) }}" class="news-collection__pagination-arrow-prev{{ pagination.current_page == 1 ? " disable" : ""}}"></a>
 					<a href="{{ path('news_subdivision_child.listing2', page_next) }}" class="news-collection__pagination-arrow-next{{ pagination.total_pages == pagination.current_page ? " disable" : "" }}"></a>
 				</div>
-
-
 			</div>
-
 		</div>
-
-
-		{# <div class="news-collection__filter-modal">
-			<div class="news-collection__filter-box">
-				<button class="news-collection__filter-btn">Скрыть фильтры</button>
-			</div>
-			{{ content.filter }}
-
-		</div> #}
 	</div>
 </section>
 
@@ -330,10 +206,6 @@
 				{% endif %}
 			</div>
 
-			{# <div class="news-collection__filter-box">
-				<button class="news-collection__filter-btn">Показать фильтры</button>
-			</div> #}
-
 			<div class="news-collection__pagination-two">
 
 				<div class="news-collection__pagination-info">
@@ -347,17 +219,7 @@
 					<a href="{{ path('news_subdivision_child.listing2', page_prev) }}" class="news-collection__pagination-arrow-prev{{ pagination.current_page == 1 ? " disable" : ""}}"></a>
 					<a href="{{ path('news_subdivision_child.listing2', page_next) }}" class="news-collection__pagination-arrow-next{{ pagination.total_pages == pagination.current_page ? " disable" : "" }}"></a>
 				</div>
-
-
 			</div>
-
 		</div>
-		{# <div class="news-collection__filter-modal">
-			<div class="news-collection__filter-box">
-				<button class="news-collection__filter-btn">Скрыть фильтры</button>
-			</div>
-			{{ content.filter }}
-
-		</div> #}
 	</div>
 </section>
