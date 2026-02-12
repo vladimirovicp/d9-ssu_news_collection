@@ -13,7 +13,7 @@ class NewsSubdivisionChildListing2 extends ControllerBase
 {
     private $page;
     private $total_pages;
-    private $output_pages = 4; // колычество выводимых новостей
+    private $output_pages = 16; // колычество выводимых новостей
     private $page_filter;
 
     private $main_subdivision_id; // ID главного подразделения
